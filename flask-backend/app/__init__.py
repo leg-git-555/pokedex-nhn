@@ -9,9 +9,10 @@ from .seeders import seed_cmd
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
+app.cli.add_command(seed_cmd)
+
 db.init_app(app)
 Migrate(app, db)
-app.cli.add_command(seed_cmd)
 
 
 # after request code for CSRF token injection
