@@ -19,3 +19,24 @@ class Pokemon(db.Model):
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
     items = db.relationship("Item", back_populates="pokemon", cascade="all, delete-orphan")
+
+    @classmethod
+    def types():
+        return [
+            "fire",
+            "electric",
+            "normal",
+            "ghost",
+            "psychic",
+            "water",
+            "bug",
+            "dragon",
+            "grass",
+            "fighting",
+            "ice",
+            "flying",
+            "poison",
+            "ground",
+            "rock",
+            "steel",
+        ]
