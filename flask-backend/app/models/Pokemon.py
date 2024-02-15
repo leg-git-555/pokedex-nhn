@@ -20,6 +20,30 @@ class Pokemon(db.Model):
 
     items = db.relationship("Item", back_populates="pokemon", cascade="all, delete-orphan")
 
+    def to_dict_all(self):
+        return {
+            "id": self.id,
+            "imageUrl": self.image_url,
+            "number": self.number,
+            "name": self.name,
+            "captured": self.captured
+        }
+
+    def to_dict_one(self):
+        return {
+            "imageUrl": self.image_url,
+            "moves": self.moves.split(','),
+            "id": self.id,
+            "number": self.number,
+            "attack": self.attack,
+            "defense": self.defense,
+            "name": self.name,
+            "type": self.type,
+            "captured": self.captured,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at
+        }
+
     @classmethod
     def types():
         return [
